@@ -1,0 +1,104 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        Portofolio Majiid Muhammad
+    </title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- <script src="/js/script.js"></script> -->
+
+</head>
+
+<body>
+    <div class="header">
+        <h1>
+            PORTOFOLIO
+        </h1>
+        <div class="nav">
+            <a href="index.html">
+                HOME
+            </a>
+            <a href="projek.html">
+                PROJECT
+            </a>
+            <a href="sertifikasi.html">
+                SERTIFIKASI
+            </a>
+        </div>
+    </div>
+    <div class="banner">
+    </div>
+    <div class="content">
+        <div class="profile-card-ser">
+            <h2>
+                SERTIFIKASI
+            </h2>
+            <div class="certificates" id="certificates">
+                <div class="certificate">
+                    <img alt="Certificate image showing Information Technology Specialist certification for Majiid Muhammad in Databases"
+                        height="450" src="/img/77420 MOS Microsoft Office Excel 2013-1.png" width="500">
+                </div>
+                <div class="certificate">
+                    <img alt="Certificate image showing Information Technology Specialist certification for Majiid Muhammad in Databases"
+                        height="450" src="/img/Databases-1.png" width="500">
+                </div>
+                <div class="certificate">
+                    <img alt="Certificate image showing Information Technology Specialist certification for Majiid Muhammad in Databases"
+                        height="450" src="/img/Office Excel 2013-1.png" width="500">
+                </div>
+                <div class="certificate">
+                    <img alt="Certificate image showing Information Technology Specialist certification for Majiid Muhammad in Databases"
+                        height="450" src="" width="500">
+                </div>
+            </div>
+            <div class="pagination">
+                <button id="prevBtn" onclick="prevPage()">Previous</button>
+                <button id="nextBtn" onclick="nextPage()">Next</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const certificates = document.querySelectorAll('.certificate');
+        const itemsPerPage = 2;
+        let currentPage = 1;
+
+        function showPage(page) {
+            const start = (page - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+
+            certificates.forEach((certificate, index) => {
+                if (index >= start && index < end) {
+                    certificate.style.display = 'block';
+                    setTimeout(() => {
+                        certificate.style.opacity = 1;
+                    }, 10);
+                } else {
+                    certificate.style.opacity = 0;
+                    setTimeout(() => {
+                        certificate.style.display = 'none';
+                    }, 500);
+                }
+            });
+
+            document.getElementById('prevBtn').disabled = page === 1;
+            document.getElementById('nextBtn').disabled = end >= certificates.length;
+        }
+
+        function nextPage() {
+            currentPage++;
+            showPage(currentPage);
+        }
+
+        function prevPage() {
+            currentPage--;
+            showPage(currentPage);
+        }
+
+        showPage(currentPage);
+    </script>
+</body>
+
+</html>
